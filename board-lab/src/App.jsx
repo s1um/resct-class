@@ -13,6 +13,7 @@ const initialPosts = [
 
 function App() {
   const [posts, setPosts] = useState(initialPosts);
+  const [keyword, setKeyword] = useState('');
 
   function addPost(title) {
     const newPost = { id: Date.now(), title, author: '나', date: '오늘', likes: 0 };
@@ -32,14 +33,14 @@ function App() {
   }
 
   const totalLikes = posts.reduce((sum, post) => sum + post.likes, 0);
+  const visiblePosts = posts.filter((post) => post.title.includes(keyword));
 
   return (
     <main>
       <Header totalLikes={totalLikes} />
-      <SearchBar />
+      <SearchBar keyword={keyword} onKeywordChange={setKeyword} />
       <PostForm onAdd={addPost} />
-      <PostList posts={posts} onLike={likePost} onDelete={deletePost} />
-    </main>
+      <PostList posts={visiblePosts} onLike={likePost} onDelete={deletePost} />    </main>
   );
 }
 
