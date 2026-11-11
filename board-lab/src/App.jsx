@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Header from './components/Header.jsx';
 import SearchBar from './components/SearchBar.jsx';
 import PostForm from './components/PostForm.jsx';
 import PostList from './components/PostList.jsx';
@@ -13,20 +14,31 @@ const initialPosts = [
 function App() {
   const [posts, setPosts] = useState(initialPosts);
 
-function addPost(title) {
-  const newPost = { id: Date.now(), title, author: '나', date: '오늘', likes: 0 };
-  setPosts([...posts, newPost]);
-}
+  function addPost(title) {
+    const newPost = { id: Date.now(), title, author: '나', date: '오늘', likes: 0 };
+    setPosts([...posts, newPost]);
+  }
 
-function deletePost(id) {
-  setPosts(posts.filter((post) => post.id !== id));
-}
- console.log(posts)
+  function deletePost(id) {
+    setPosts(posts.filter((post) => post.id !== id));
+  }
+
+  function likePost(id) {
+    setPosts(
+      posts.map((post) =>
+        post.id === id ? { ...post, likes: post.likes + 1 } : post
+      )
+    );
+  }
+
+  const totalLikes = posts.reduce((sum, post) => sum + post.likes, 0);
+
   return (
     <main>
+      <Header totalLikes={totalLikes} />
       <SearchBar />
       <PostForm onAdd={addPost} />
-      <PostList posts={posts} onDelete={deletePost} />
+      <PostList posts={posts} onLike={likePost} onDelete={deletePost} />
     </main>
   );
 }

@@ -1,12 +1,4 @@
-import { useState } from 'react';
-
-function PostItem({ post, onDelete }) {
-  const [likes, setLikes] = useState(post.likes);
-
-  function handleLike() {
-    setLikes(likes + 1);
-  }
-
+function PostItem({ post, onLike, onDelete }) {
   return (
     <li className="post-item">
       <div className="post-info">
@@ -14,8 +6,8 @@ function PostItem({ post, onDelete }) {
         <p>작성자 {post.author} · {post.date}</p>
       </div>
       <div className="post-actions">
-        <button type="button" onClick={handleLike}>
-          좋아요 {likes}
+        <button type="button" onClick={() => onLike(post.id)}>
+          좋아요 {post.likes}
         </button>
         <button type="button" onClick={() => onDelete(post.id)}>
           삭제
