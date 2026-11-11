@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function PostItem({ post }) {
+function PostItem({ post, onDelete }) {
   const [likes, setLikes] = useState(post.likes);
 
   function handleLike() {
@@ -16,6 +16,9 @@ function PostItem({ post }) {
       <div className="post-actions">
         <button type="button" onClick={handleLike}>
           좋아요 {likes}
+        </button>
+        <button type="button" onClick={() => onDelete(post.id)}>
+          삭제
         </button>
       </div>
     </li>
