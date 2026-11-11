@@ -1,0 +1,75 @@
+#root {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.panel {
+  margin-bottom: 16px;
+  padding: 20px;
+  border: 2px solid #5376bd;
+  background: white;
+}
+
+.panel h2 {
+  margin: 0 0 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.posts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.post-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #d9dfeb;
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-info p {
+  margin: 4px 0 0;
+  color: #526076;
+  font-size: 14px;
+}
+
+.post-actions,
+.form-row {
+  display: flex;
+  gap: 8px;
+}
+
+.empty {
+  color: #526076;
+}
+
+button {
+  padding: 6px 12px;
+  border: 1px solid #5376bd;
+  background: white;
+  color: #172033;
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #8ba0c4;
+}
