@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { fetchPosts } from '../api.js';
 
 function Header() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    fetchPosts().then((data) => setPosts(data));
-  }, []);
+  const { data: posts = [] } = useQuery({
+    queryKey: ['posts'],
+    queryFn: fetchPosts,
+  });
 
   const totalLikes = posts.reduce((sum, post) => sum + post.likes, 0);
 
