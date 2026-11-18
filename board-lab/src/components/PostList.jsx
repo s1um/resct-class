@@ -1,21 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { fetchPosts } from '../api.js';
 import Panel from './Panel.jsx';
 import PostItem from './PostItem.jsx';
 
 function PostList() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { data: posts, isPending, isError, error } = useQuery({
+    queryKey: ['posts'],
+    queryFn: fetchPosts,
+  });
 
-  useEffect(() => {
-    fetchPosts()
-      .then((data) => setPosts(data))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (loading) {
+  if (isPending) {
     return (
       <Panel title="글 목록">
         <p className="empty">불러오는 중...</p>
@@ -23,10 +17,10 @@ function PostList() {
     );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <Panel title="글 목록">
-        <p className="empty">불러오지 못했습니다: {error}</p>
+        <p className="empty">불러오지 못했습니다: {error.message}</p>
       </Panel>
     );
   }
