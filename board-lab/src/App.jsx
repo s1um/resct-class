@@ -1,46 +1,39 @@
 import { useState } from 'react';
-import Header from './components/Header.jsx';
-import SearchBar from './components/SearchBar.jsx';
-import PostForm from './components/PostForm.jsx';
-import PostList from './components/PostList.jsx';
+import TodoForm from './components/TodoForm.jsx';
+import TodoList from './components/TodoList.jsx';
 import './App.css';
 
-const initialPosts = [
-  { id: 1, title: '첫 번째 글', author: '민수', date: '10-13', likes: 3 },
-  { id: 2, title: '두 번째 글', author: '지은', date: '10-14', likes: 0 },
-  { id: 3, title: '세 번째 글', author: '현우', date: '10-15', likes: 7 },
-];
-
 function App() {
-  const [posts, setPosts] = useState(initialPosts);
-  const [keyword, setKeyword] = useState('');
+  const [todos, setTodos] = useState([
+    { id: 1, text: '4주차 복습', done: false },
+    { id: 2, text: 'React 문서 읽기', done: true },
+  ]);
 
-  function addPost(title) {
-    const newPost = { id: Date.now(), title, author: '나', date: '오늘', likes: 0 };
-    setPosts([...posts, newPost]);
+  // 1단계: 추가
+  function addTodo(text) {
+    // 여기에 작성
   }
 
-  function deletePost(id) {
-    setPosts(posts.filter((post) => post.id !== id));
+  // 2단계: 완료 토글
+  function toggleTodo(id) {
+    // 여기에 작성
   }
 
-  function likePost(id) {
-    setPosts(
-      posts.map((post) =>
-        post.id === id ? { ...post, likes: post.likes + 1 } : post
-      )
-    );
+  // 3단계: 삭제
+  function deleteTodo(id) {
+    // 여기에 작성
   }
 
-  const totalLikes = posts.reduce((sum, post) => sum + post.likes, 0);
-  const visiblePosts = posts.filter((post) => post.title.includes(keyword));
+  // 4단계: 남은 개수
+  const remaining = 0; // 여기를 고치기
 
   return (
-    <main>
-      <Header totalLikes={totalLikes} />
-      <SearchBar keyword={keyword} onKeywordChange={setKeyword} />
-      <PostForm onAdd={addPost} />
-      <PostList posts={visiblePosts} onLike={likePost} onDelete={deletePost} />    </main>
+    <div className="todo-app">
+      <h1>할 일</h1>
+      <TodoForm onAdd={addTodo} />
+      <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
+      <p>{remaining}개 남음</p>
+    </div>
   );
 }
 

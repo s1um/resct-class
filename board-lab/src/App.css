@@ -73,3 +73,29 @@ input {
   padding: 10px;
   border: 1px solid #8ba0c4;
 }
+
+.todo-app {
+  max-width: 480px;
+  margin: 40px auto;
+}
+
+.todo-app ul {
+  padding: 0;
+}
+
+.todo-app li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  list-style: none;
+}
+
+.todo-app li.done span {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.todo-app li span {
+  cursor: pointer;
+}
