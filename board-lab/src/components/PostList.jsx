@@ -1,24 +1,43 @@
+import { useEffect, useState } from 'react';
+import { fetchPosts } from '../api.js';
 import Panel from './Panel.jsx';
 import PostItem from './PostItem.jsx';
 
-function PostList({ posts, onLike, onDelete }) {
+function PostList() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchPosts()
+      .then((data) => setPosts(data))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return (
+      <Panel title="글 목록">
+        <p className="empty">불러오는 중...</p>
+      </Panel>
+    );
+  }
+
+  if (error) {
+    return (
+      <Panel title="글 목록">
+        <p className="empty">불러오지 못했습니다: {error}</p>
+      </Panel>
+    );
+  }
+
   return (
     <Panel title="글 목록">
-      <p>전체 {posts.length}개</p>
-      {posts.length === 0 ? (
-        <p className="empty">보여줄 글이 없습니다.</p>
-      ) : (
-        <ul className="posts">
-          {posts.map((post) => (
-            <PostItem
-              key={post.id}
-              post={post}
-              onLike={onLike}
-              onDelete={onDelete}
-            />
-          ))}
-        </ul>
-      )}
+      <ul className="posts">
+        {posts.map((post) => (
+          <PostItem key={post.id} post={post} />
+        ))}
+      </ul>
     </Panel>
   );
 }
