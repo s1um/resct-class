@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8081';
+const BASE_URL = 'https://board-lab-back.minq.live';
 
 async function request(path, options) {
   const response = await fetch(`${BASE_URL}${path}`, options);

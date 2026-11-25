@@ -20,7 +20,6 @@ function App() {
       </div>
             <PostForm />
       {showList && <PostList />}
-      {showList && <PostList />}
     </main>
   );
 }

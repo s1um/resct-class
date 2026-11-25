@@ -1151,54 +1151,6 @@
       "title": "JavaScript 이야기 192",
       "author": "지은",
       "likes": 17
-    },
-    {
-      "id": 193,
-      "title": "CSS 이야기 193",
-      "author": "현우",
-      "likes": 4
-    },
-    {
-      "id": 194,
-      "title": "취업 이야기 194",
-      "author": "서연",
-      "likes": 11
-    },
-    {
-      "id": 195,
-      "title": "동아리 이야기 195",
-      "author": "도윤",
-      "likes": 18
-    },
-    {
-      "id": 196,
-      "title": "React 이야기 196",
-      "author": "민수",
-      "likes": 5
-    },
-    {
-      "id": 197,
-      "title": "JavaScript 이야기 197",
-      "author": "지은",
-      "likes": 12
-    },
-    {
-      "id": 198,
-      "title": "CSS 이야기 198",
-      "author": "현우",
-      "likes": 19
-    },
-    {
-      "id": 199,
-      "title": "취업 이야기 199",
-      "author": "서연",
-      "likes": 6
-    },
-    {
-      "id": 200,
-      "title": "동아리 이야기 200",
-      "author": "도윤",
-      "likes": 13
     }
   ]
 }
